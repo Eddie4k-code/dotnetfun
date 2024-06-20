@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models.Domain;
 using Models.DTO;
+using Repositories.IRegionRepository;
 
 
 namespace API.Controllers {
@@ -12,18 +13,20 @@ namespace API.Controllers {
     [ApiController]
     public class RegionsController : ControllerBase {
         private NZWalksDbContext dbContext;
+        private readonly IRegionRepository regionRepository;
 
-        public RegionsController(NZWalksDbContext dbContext)
+        public RegionsController(NZWalksDbContext dbContext, IRegionRepository regionRepository)
         {
             this.dbContext = dbContext;
+            this.regionRepository = regionRepository;
         }
 
 
         [HttpGet]
-        public IActionResult GetAll() {
+        public async Task<IActionResult> GetAll() {
 
 
-            var regions = dbContext.Regions.ToList();
+            var regions = await dbContext.Regions.ToListAsync();
 
             var regionsDto = new List<RegionDto>();
 
@@ -44,9 +47,9 @@ namespace API.Controllers {
 
         [HttpGet]
         [Route("{id:Guid}")]
-        public IActionResult GetById([FromRoute]Guid id) {
+        public async Task<IActionResult> GetById([FromRoute]Guid id) {
 
-            var region = this.dbContext.Regions.FirstOrDefault(x => x.ID == id);
+            var region = await this.dbContext.Regions.FirstOrDefaultAsync(x => x.ID == id);
 
             
 
@@ -67,7 +70,7 @@ namespace API.Controllers {
 
 
         [HttpPost]
-        public IActionResult Create([FromBody]CreateRegionDto createRegionDto) {
+        public async Task<IActionResult> Create([FromBody]CreateRegionDto createRegionDto) {
 
             //Map and convert DTO to domain model.
             var newRegion = new Region(){
@@ -79,9 +82,9 @@ namespace API.Controllers {
 
             //use domain model to create region
 
-            this.dbContext.Add(newRegion);
+            await this.dbContext.AddAsync(newRegion);
 
-            this.dbContext.SaveChanges();
+            await this.dbContext.SaveChangesAsync();
             
         
             return Ok(createRegionDto);

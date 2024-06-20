@@ -4560,11 +4560,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\eddie\\Documents\\ASP_API\\ASP_API.csproj",
+      "projectUniqueName": "C:\\Users\\eddie\\Documents\\dotnetfun\\ASP_API.csproj",
       "projectName": "ASP_API",
-      "projectPath": "c:\\Users\\eddie\\Documents\\ASP_API\\ASP_API.csproj",
+      "projectPath": "C:\\Users\\eddie\\Documents\\dotnetfun\\ASP_API.csproj",
       "packagesPath": "C:\\Users\\eddie\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\eddie\\Documents\\ASP_API\\obj\\",
+      "outputPath": "C:\\Users\\eddie\\Documents\\dotnetfun\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\eddie\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4585,11 +4585,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4638,7 +4633,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

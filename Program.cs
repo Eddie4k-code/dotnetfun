@@ -1,5 +1,7 @@
 using API.Data;
+using dotnetfun.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Repositories.IRegionRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<NZWalksDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksConnectionString"));
 });
+
+// inject IRegionRepository
+builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
 
 builder.Services.AddControllers();
 
